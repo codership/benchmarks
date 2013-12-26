@@ -8,10 +8,12 @@ Idea
 
 This is (going) to be a set of scripts helping to 
 build a test environment and test your Galera setups.
-We are using  [ansible](http://http://www.ansibleworks.com/) to 
+We are using  [ansible](http://www.ansibleworks.com/) to 
 automate and distribute tasks.
 You don't need to log on any of the nodes as you are going to manage
 your cluster/testing from you local machine.
+So this repo is going to be your working directory for your ongoing 
+tasks.
 
 There are 4/5 modules planed
 
@@ -28,6 +30,10 @@ AWS or an OpenStack environment.
 This module/scripts are going to install and configure you a 
 * Galera cluster
 * Deploys the testing script on a separate machine
+
+Now (20131226) you are going to have a cluster of $yournumber of 
+galera nodes with $yournumber of testing/sysbench nodes pointing
+to *one* of the galera nodes.
 
 We are going to support the Debian(Ubuntu) and RedHat OS family.
 Regarding Galera you can choose between Codership, MariaDB, Percona.
@@ -55,3 +61,8 @@ later investigation.
 This is about extracting and visualise the informations. 
 BIG TODO
 
+
+
+WARNING
+============
+This is work in progress. It is going to be changed on a daily basis :)

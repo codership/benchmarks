@@ -1,0 +1,324 @@
+{
+    "Reservations": [
+        {
+            "OwnerId": "114453846877", 
+            "ReservationId": "r-f26675dd", 
+            "Groups": [
+                {
+                    "GroupName": "galera", 
+                    "GroupId": "sg-997c53f2"
+                }
+            ], 
+            "Instances": [
+                {
+                    "Monitoring": {
+                        "State": "disabled"
+                    }, 
+                    "PublicDnsName": null, 
+                    "KernelId": "aki-805ea7e9", 
+                    "State": {
+                        "Code": 48, 
+                        "Name": "terminated"
+                    }, 
+                    "EbsOptimized": false, 
+                    "LaunchTime": "2013-12-22T05:28:46.000Z", 
+                    "ProductCodes": [], 
+                    "StateTransitionReason": "User initiated (2013-12-22 05:38:56 GMT)", 
+                    "InstanceId": "i-539c8e7c", 
+                    "ImageId": "ami-388a1451", 
+                    "PrivateDnsName": null, 
+                    "KeyName": "EY", 
+                    "SecurityGroups": [
+                        {
+                            "GroupName": "galera", 
+                            "GroupId": "sg-997c53f2"
+                        }
+                    ], 
+                    "ClientToken": null, 
+                    "InstanceType": "t1.micro", 
+                    "NetworkInterfaces": [], 
+                    "Placement": {
+                        "Tenancy": "default", 
+                        "GroupName": null, 
+                        "AvailabilityZone": "us-east-1c"
+                    }, 
+                    "Hypervisor": "xen", 
+                    "BlockDeviceMappings": [], 
+                    "Architecture": "i386", 
+                    "StateReason": {
+                        "Message": "Client.UserInitiatedShutdown: User initiated shutdown", 
+                        "Code": "Client.UserInitiatedShutdown"
+                    }, 
+                    "RootDeviceName": "/dev/sda1", 
+                    "VirtualizationType": "paravirtual", 
+                    "RootDeviceType": "ebs", 
+                    "AmiLaunchIndex": 0
+                }
+            ]
+        }, 
+        {
+            "OwnerId": "114453846877", 
+            "ReservationId": "r-847ecda4", 
+            "Groups": [
+                {
+                    "GroupName": "galera", 
+                    "GroupId": "sg-997c53f2"
+                }
+            ], 
+            "Instances": [
+                {
+                    "Monitoring": {
+                        "State": "disabled"
+                    }, 
+                    "PublicDnsName": "ec2-107-21-159-30.compute-1.amazonaws.com", 
+                    "RootDeviceType": "ebs", 
+                    "State": {
+                        "Code": 16, 
+                        "Name": "running"
+                    }, 
+                    "EbsOptimized": false, 
+                    "LaunchTime": "2013-12-22T03:40:47.000Z", 
+                    "PublicIpAddress": "107.21.159.30", 
+                    "PrivateIpAddress": "10.181.147.189", 
+                    "ProductCodes": [
+                        {
+                            "ProductCodeId": "aacglxeowvn5hy8sznltowyqe", 
+                            "ProductCodeType": "marketplace"
+                        }
+                    ], 
+                    "StateTransitionReason": null, 
+                    "InstanceId": "i-b1a41791", 
+                    "ImageId": "ami-eb6b0182", 
+                    "PrivateDnsName": "ip-10-181-147-189.ec2.internal", 
+                    "KeyName": "EY", 
+                    "SecurityGroups": [
+                        {
+                            "GroupName": "galera", 
+                            "GroupId": "sg-997c53f2"
+                        }
+                    ], 
+                    "ClientToken": "138768364170397719", 
+                    "InstanceType": "m1.medium", 
+                    "NetworkInterfaces": [], 
+                    "Placement": {
+                        "Tenancy": "default", 
+                        "GroupName": null, 
+                        "AvailabilityZone": "us-east-1b"
+                    }, 
+                    "Hypervisor": "xen", 
+                    "BlockDeviceMappings": [
+                        {
+                            "DeviceName": "/dev/sda", 
+                            "Ebs": {
+                                "Status": "attached", 
+                                "DeleteOnTermination": true, 
+                                "VolumeId": "vol-26a8cf6b", 
+                                "AttachTime": "2013-12-22T03:40:50.000Z"
+                            }
+                        }
+                    ], 
+                    "Architecture": "x86_64", 
+                    "KernelId": "aki-88aa75e1", 
+                    "RootDeviceName": "/dev/sda1", 
+                    "VirtualizationType": "paravirtual", 
+                    "Tags": [
+                        {
+                            "Value": "rhel01", 
+                            "Key": "Name"
+                        }
+                    ], 
+                    "AmiLaunchIndex": 0
+                }, 
+                {
+                    "Monitoring": {
+                        "State": "disabled"
+                    }, 
+                    "PublicDnsName": "ec2-54-196-220-0.compute-1.amazonaws.com", 
+                    "RootDeviceType": "ebs", 
+                    "State": {
+                        "Code": 16, 
+                        "Name": "running"
+                    }, 
+                    "EbsOptimized": false, 
+                    "LaunchTime": "2013-12-22T03:40:47.000Z", 
+                    "PublicIpAddress": "54.196.220.0", 
+                    "PrivateIpAddress": "10.182.136.205", 
+                    "ProductCodes": [
+                        {
+                            "ProductCodeId": "aacglxeowvn5hy8sznltowyqe", 
+                            "ProductCodeType": "marketplace"
+                        }
+                    ], 
+                    "StateTransitionReason": null, 
+                    "InstanceId": "i-b4a41794", 
+                    "ImageId": "ami-eb6b0182", 
+                    "PrivateDnsName": "ip-10-182-136-205.ec2.internal", 
+                    "KeyName": "EY", 
+                    "SecurityGroups": [
+                        {
+                            "GroupName": "galera", 
+                            "GroupId": "sg-997c53f2"
+                        }
+                    ], 
+                    "ClientToken": "138768364170397719", 
+                    "InstanceType": "m1.medium", 
+                    "NetworkInterfaces": [], 
+                    "Placement": {
+                        "Tenancy": "default", 
+                        "GroupName": null, 
+                        "AvailabilityZone": "us-east-1b"
+                    }, 
+                    "Hypervisor": "xen", 
+                    "BlockDeviceMappings": [
+                        {
+                            "DeviceName": "/dev/sda", 
+                            "Ebs": {
+                                "Status": "attached", 
+                                "DeleteOnTermination": true, 
+                                "VolumeId": "vol-1aa8cf57", 
+                                "AttachTime": "2013-12-22T03:40:51.000Z"
+                            }
+                        }
+                    ], 
+                    "Architecture": "x86_64", 
+                    "KernelId": "aki-88aa75e1", 
+                    "RootDeviceName": "/dev/sda1", 
+                    "VirtualizationType": "paravirtual", 
+                    "Tags": [
+                        {
+                            "Value": "rhel02", 
+                            "Key": "Name"
+                        }
+                    ], 
+                    "AmiLaunchIndex": 3
+                }, 
+                {
+                    "Monitoring": {
+                        "State": "disabled"
+                    }, 
+                    "PublicDnsName": "ec2-54-226-60-199.compute-1.amazonaws.com", 
+                    "RootDeviceType": "ebs", 
+                    "State": {
+                        "Code": 16, 
+                        "Name": "running"
+                    }, 
+                    "EbsOptimized": false, 
+                    "LaunchTime": "2013-12-22T03:40:47.000Z", 
+                    "PublicIpAddress": "54.226.60.199", 
+                    "PrivateIpAddress": "10.180.134.98", 
+                    "ProductCodes": [
+                        {
+                            "ProductCodeId": "aacglxeowvn5hy8sznltowyqe", 
+                            "ProductCodeType": "marketplace"
+                        }
+                    ], 
+                    "StateTransitionReason": null, 
+                    "InstanceId": "i-b6a41796", 
+                    "ImageId": "ami-eb6b0182", 
+                    "PrivateDnsName": "ip-10-180-134-98.ec2.internal", 
+                    "KeyName": "EY", 
+                    "SecurityGroups": [
+                        {
+                            "GroupName": "galera", 
+                            "GroupId": "sg-997c53f2"
+                        }
+                    ], 
+                    "ClientToken": "138768364170397719", 
+                    "InstanceType": "m1.medium", 
+                    "NetworkInterfaces": [], 
+                    "Placement": {
+                        "Tenancy": "default", 
+                        "GroupName": null, 
+                        "AvailabilityZone": "us-east-1b"
+                    }, 
+                    "Hypervisor": "xen", 
+                    "BlockDeviceMappings": [
+                        {
+                            "DeviceName": "/dev/sda", 
+                            "Ebs": {
+                                "Status": "attached", 
+                                "DeleteOnTermination": true, 
+                                "VolumeId": "vol-21a8cf6c", 
+                                "AttachTime": "2013-12-22T03:40:50.000Z"
+                            }
+                        }
+                    ], 
+                    "Architecture": "x86_64", 
+                    "KernelId": "aki-88aa75e1", 
+                    "RootDeviceName": "/dev/sda1", 
+                    "VirtualizationType": "paravirtual", 
+                    "Tags": [
+                        {
+                            "Value": "rhel03", 
+                            "Key": "Name"
+                        }
+                    ], 
+                    "AmiLaunchIndex": 1
+                }, 
+                {
+                    "Monitoring": {
+                        "State": "disabled"
+                    }, 
+                    "PublicDnsName": "ec2-54-237-81-117.compute-1.amazonaws.com", 
+                    "RootDeviceType": "ebs", 
+                    "State": {
+                        "Code": 16, 
+                        "Name": "running"
+                    }, 
+                    "EbsOptimized": false, 
+                    "LaunchTime": "2013-12-22T03:40:47.000Z", 
+                    "PublicIpAddress": "54.237.81.117", 
+                    "PrivateIpAddress": "10.180.136.105", 
+                    "ProductCodes": [
+                        {
+                            "ProductCodeId": "aacglxeowvn5hy8sznltowyqe", 
+                            "ProductCodeType": "marketplace"
+                        }
+                    ], 
+                    "StateTransitionReason": null, 
+                    "InstanceId": "i-b7a41797", 
+                    "ImageId": "ami-eb6b0182", 
+                    "PrivateDnsName": "ip-10-180-136-105.ec2.internal", 
+                    "KeyName": "EY", 
+                    "SecurityGroups": [
+                        {
+                            "GroupName": "galera", 
+                            "GroupId": "sg-997c53f2"
+                        }
+                    ], 
+                    "ClientToken": "138768364170397719", 
+                    "InstanceType": "m1.medium", 
+                    "NetworkInterfaces": [], 
+                    "Placement": {
+                        "Tenancy": "default", 
+                        "GroupName": null, 
+                        "AvailabilityZone": "us-east-1b"
+                    }, 
+                    "Hypervisor": "xen", 
+                    "BlockDeviceMappings": [
+                        {
+                            "DeviceName": "/dev/sda", 
+                            "Ebs": {
+                                "Status": "attached", 
+                                "DeleteOnTermination": true, 
+                                "VolumeId": "vol-1ba8cf56", 
+                                "AttachTime": "2013-12-22T03:40:50.000Z"
+                            }
+                        }
+                    ], 
+                    "Architecture": "x86_64", 
+                    "KernelId": "aki-88aa75e1", 
+                    "RootDeviceName": "/dev/sda1", 
+                    "VirtualizationType": "paravirtual", 
+                    "Tags": [
+                        {
+                            "Value": "sysbench", 
+                            "Key": "Name"
+                        }
+                    ], 
+                    "AmiLaunchIndex": 2
+                }
+            ]
+        }
+    ]
+}

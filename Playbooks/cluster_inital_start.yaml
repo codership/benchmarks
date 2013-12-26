@@ -1,0 +1,23 @@
+---
+- hosts: galera
+#  serial: 1
+  tasks:
+    - name:   "Chosen: stop all running mysqld (even we don't expect to have any running mysqld)"
+      #shell:  killall mysqld
+      service: name=mysql state=stopped
+      ignore_errors: true
+
+    - name:   Delete the redolog the hard was (needed for MySQL <=5.6)
+      shell:  rm /var/lib/mysql/ib_logfile*
+      ignore_errors: true
+
+    - name:    Start initial Node {{ leader }}
+      service: name=mysql state=started arguments="--wsrep-cluster-address=gcomm://"
+      when:    leader is defined
+
+#    - name:    Start next nodes {{ leader }}
+#      service: name=mysql state=started 
+#      when:    leader is undefined
+#
+
+- include: cluster_inital_start_rest.yaml

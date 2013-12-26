@@ -1,0 +1,8 @@
+---
+- hosts: galera
+  serial: 1
+  tasks:
+    - name:    Start next nodes 
+      service: name=mysql state=started 
+      when:    leader is undefined
+

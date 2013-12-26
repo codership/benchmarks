@@ -1,0 +1,3 @@
+GRANT ALL ON *.* TO {{ root_user }}@localhost IDENTIFIED BY "{{ root_password }}";
+GRANT ALL ON sbtest.* TO {{ sysbench_user }}@'%' IDENTIFIED BY "{{ sysbench_password }}";
+CREATE SCHEMA IF NOT EXISTS sbtest;
