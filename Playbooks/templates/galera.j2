@@ -5,8 +5,8 @@ default-storage-engine        = innodb
 
 innodb_autoinc_lock_mode      = 2
 innodb_flush_log_at_trx_commit= 0
-innodb_buffer_pool_size       = {{ innodb_buffer_pool_size_mb| default(2048) }}M
-innodb_log_buffer_size        = {{ innodb_log_buffer_size_mb| default(128) }}M
+innodb_buffer_pool_size       = {{ innodb_buffer_pool_size| default('2048M') }}
+innodb_log_buffer_size        = {{ innodb_log_buffer_size| default('128M') }}
 innodb_file_per_table        = 1
 
 query_cache_size              = 0
