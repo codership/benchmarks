@@ -1,0 +1,49 @@
+This is a little HOWTO.
+
+Reminder: Check your ansible version. This Repo is build and tested against ansible 1.4.3
+
+Right now you got no help in building you ini file.
+This is going to be the file to identify your nodes.
+It is going to look like this:
+
+#v+
+[galera]
+my.fqdn.it  ansible_ssh_user=root leader=me
+my2.fqdn.it  ansible_ssh_user=root 
+54.204.173.187  ansible_ssh_user=root
+
+[sysbench]
+dns.name ansible_ssh_user=root
+#v-
+
+First we got two containers ([galera] and [sysbench]).
+There you put your machines in it. You are free to use 
+the DNS name or the IP for the first column.
+The ansible_ssh_user option just tells which user to use
+to log on the remote machine. We suggest to deploy your
+public key on that nodes.
+One of the galera nodes got to be marked with leader=me. 
+It just tells which node will run the first/initial galera instance.
+
+Test your ini file:
+> ansible -i $YOURFILE -m ping
+
+Now you can run your first installation (as of 20131226 we support 
+the RedHat OS family and coderhip installation).
+
+> ansible-playbook -i $YOURFILE Playbook/multi_install.yaml
+
+Playbook/multi_install.yaml is just a bunch of scripts. 
+In the end you are going to have a running galera cluster with
+all the testnodes pointing to the leader node for testing.
+
+
+Great now run your first Test
+
+> ansible-playbook -i $YOURFILE Playbook/multi_test.yaml
+
+Great you are done.
+The result file is stored in your /tmp. Fixed later :)
+
+
+
