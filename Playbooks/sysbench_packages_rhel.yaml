@@ -1,0 +1,28 @@
+---
+- hosts: sysbench
+  vars_files: 
+   - codership_rhel_pkg_vars.yaml
+  tasks:
+    - name:   Install some system packages. This is duplicated and also in rhelpackages -> FIX IT
+      shell:  yum install -y {{ item }}
+      with_items:
+        - libaio
+        - libselinux-python
+
+    - name: "Get mysql Repo:  yum localinstall http://dev.mysql.com/get/mysql-community-release-el6-5.noarch.rpm/ Defaults to 5.6 "
+    # See http://www.tocker.ca/2013/12/11/installing-mysql-5.7-dmr3-with-the-official-yum-repos.html to change version: yum-config-manager
+      shell:  yum localinstall -y {{ mysqlrepo }}
+    - name:   Install MySQL Client and Libs
+      shell:  yum install -y {{ item }}
+      with_items:
+        - mysql-community-libs
+        - mysql-community-client
+#    - name:   Copy sysbench
+#      copy:   src=Files/{{ sysbench }} dest=/tmp/{{ sysbench }}
+    - name: Download mysqld                                                                                                                                            
+      shell: cd /tmp && wget "{{ sysbench }}" && touch /tmp/sysbench   creates=/tmp/sysbech
+    - name:   Install {{ sysbench }}  #  Fixed check for sysbench-0.5-3.el6.x86_64 to make it idempodent -> FIX IT
+      shell:  rpm -q {{ sysbench_name }} || rpm -U /tmp/{{ sysbench_file }} 
+      #shell:  rpm -q sysbench-0.5-3.el6.x86_64 || rpm -U /tmp/{{ sysbench_file }} 
+# http://www.lefred.be/files/sysbench-0.5-3.el6_.x86_64.rpm
+

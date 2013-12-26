@@ -1,0 +1,14 @@
+---
+- hosts: 
+    - galera
+    - sysbench
+  tasks:
+    - name: Disable Selinux temporary
+      shell: setenforce 0
+      when: ansible_os_family == "RedHat"
+    - name: Disable Firewall
+      service: name=iptables state=stopped 
+      when: ansible_os_family == "RedHat"
+      ignore_errors: true
+
+

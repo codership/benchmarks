@@ -1,0 +1,6 @@
+---
+- hosts: galera
+  serial: 1
+  tasks:
+    - name:    restart one node after another
+      service: name=mysql state=restarted

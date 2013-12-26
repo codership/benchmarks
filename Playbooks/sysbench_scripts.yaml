@@ -1,0 +1,5 @@
+---
+- hosts: sysbench
+  tasks:
+    - name: copy sysbench script
+      copy: src=../Modules/sysbench.sh dest=/root/sysbench.sh mode=544

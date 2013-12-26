@@ -1,0 +1,27 @@
+---
+- hosts: 
+    - galera
+    - sysbench
+  tasks:
+    - name: Disable Selinux temporary
+      shell: setenforce 0
+      when: ansible_os_family == "RedHat"
+      ignore_errors: true
+    - name: get any mysql packages
+      shell: rpm -qa | grep -U  mysql
+      ignore_errors: true
+      register: rpm
+    - name: remove package
+      shell: yum erase -y  {{ rpm.stdout }}
+      ignore_errors: true
+      when: rpm
+    - name: Install packages
+      shell: yum install -y {{ item }}
+      with_items:
+        - wget
+        - perl
+        - rsync
+        - libaio
+        - libselinux-python
+        - libevent
+

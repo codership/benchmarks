@@ -1,0 +1,26 @@
+---
+- hosts: galera
+  vars_files:
+    - codership_rhel_pkg_vars.yaml
+
+  tasks:
+    - name: "Getting Repos skipped (not working whith rhel"
+      shell: echo "true"
+#    - name: "Get mysql Repo:  it is not working as the packages from repo are newer than codership and so conflicts:  file .. from install of mysql-community-common-5.5.35-1.el6.x86_64 conflicts with file from package MySQL-server-5.5.34_wsrep_25.9-1.rhel6.x86_64 "
+#      shell:  yum localinstall -y {{ mysqlrepo }}
+#    - name: Disable mysql56-community
+#      shell: yum-config-manager --disable mysql56-community 
+#    - name: Enable mysql55-community
+#      shell: yum-config-manager --enable mysql55-community 
+    - name: Download mysqld
+      shell: cd /tmp && wget "{{ mysqld }}" && touch /tmp/mysql   creates=/tmp/mysql
+    - name: Install mysqld -> Fix me to use repo or parse filename
+      shell: rpm -q {{ mysqld_name }} || rpm -U /tmp/{{ mysqld_file }}
+    - name: Download galera
+      shell: cd /tmp && wget "{{ galera }}" && touch /tmp/galera  creates=/tmp/galera
+    - name: Install galera -> Fix me to use repo or parse filename
+      shell: rpm -q {{ galera_name }} || rpm -U /tmp/{{ galera_file }}
+    - name: "Download MySQL Client from {{ mysqlclient }}"
+      shell: cd /tmp && wget "{{ mysqlclient }}" && touch /tmp/client  creates=/tmp/client
+    - name: Install MySQL client -> Fix me to use repo or parse filename
+      shell: rpm -q {{ mysqlclient_name }} || rpm -U /tmp/{{ mysqlclient_file }}

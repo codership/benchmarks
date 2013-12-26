@@ -1,0 +1,3 @@
+- include: galera_configure.yaml
+- include: galera_restart.yaml
+- include: sysbench_tests.yaml

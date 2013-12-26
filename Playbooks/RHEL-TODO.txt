@@ -1,0 +1,23 @@
+Install virtual machines
+Put the IPs into galera_vars.yaml -> gcomm
+ansible -i aws.ini rhel -m shell -a 'ip a s dev eth0 ' | grep "inet " | awk '{print $2}'| sed 's#/.*##'
+Playbook: disable iptables/selinuxPlaybooks/services.yaml
+ansible-playbook  -i aws.ini  Playbooks/services.yaml
+playbook: rhelpackages.yaml
+ansible-playbook  -i aws.ini  Playbooks/rhelpackages.yaml 
+playbook: installcoderhipsrhel.yaml
+ansible-playbook  -i aws.ini  Playbooks/installcoderhipsrhel.yaml
+playbook: galera_configure.yaml
+ansible-playbook  -i aws.ini  Playbooks/galera_configure.yaml
+
+
+
+ansible -i aws.ini rhel -m shell -a 'killall mysqld'
+ansible -i aws.ini rhel -m shell -a 'rm /var/lib/mysql/ib_logfile*'
+ansible -i aws.ini rhel -m shell -a 'service mysql start --wsrep-cluster-address=gcomm://  ' -l rhel01
+ansible -i aws.ini rhel -m service  -a 'name=mysql state=started  ' -l rhel02
+
+ansible -i aws.ini rhel -m service  -a 'name=mysql state=started  ' -l rhel03
+
+####
+Sysbenchclient: sysbench_packages_rhel.yaml

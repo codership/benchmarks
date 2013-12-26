@@ -1,0 +1,16 @@
+---
+mysqld:           https://launchpad.net/codership-mysql/5.5/5.5.34-25.9/+download/MySQL-server-5.5.34_wsrep_25.9-1.rhel6.x86_64.rpm
+mysqld:           https://launchpad.net/codership-mysql/5.6/5.6.14-25.1/+download/MySQL-server-5.6.14_wsrep_25.1-1.rhel6.x86_64.rpm
+mysqld_file:      "{{ mysqld.split('/')[-1] }}"
+mysqld_name:      "{{ mysqld_file.replace('.rpm','') }}"
+galera:           https://launchpad.net/galera/2.x/25.2.8/+download/galera-25.2.8-1.rhel6.x86_64.rpm
+galera:           https://launchpad.net/galera/3.x/25.3.2/+download/galera-25.3.2-1.rhel6.x86_64.rpm
+galera_file:      "{{ galera.split('/')[-1] }}"
+galera_name:      "{{ galera_file.replace('.rpm','') }}"
+mysqlclient:      http://dev.mysql.com/get/Downloads/MySQL-5.5/MySQL-client-5.5.35-1.el6.x86_64.rpm
+mysqlclient_file: "{{ mysqlclient.split('/')[-1] }}"
+mysqlclient_name: "{{ mysqlclient_file.replace('.rpm','') }}"
+sysbench:         sysbench-0.5-3.el6_.x86_64.rpm
+mysqllib:         MySQL-shared-5.6.15-1.linux_glibc2.5.x86_64.rpm
+mysqlrepo:        http://dev.mysql.com/get/mysql-community-release-el6-5.noarch.rpm
+repoversion:      For later use

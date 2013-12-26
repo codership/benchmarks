@@ -1,0 +1,8 @@
+Security groups:
+Ports we need: 
+in general:
+mysql 3306             <- iptables/secgroup
+galera 
+  group communication : 4567  <- also
+  IST                 : 4568
+  RSYNC               : 4444

@@ -1,0 +1,37 @@
+---
+- hosts: galera
+  tasks:
+    - name: "Updating Cache {{ ansible_distribution_release }}"
+      apt: update_cache=yes
+    - name: "Import apt_pkg"
+      apt:  "pkg={{ item }} state=present"
+      with_items:
+        - python-apt
+        - python-pycurl
+    - name: "Import Percona Key"
+      #apt_key: state=present id=1C4CBDCDCD2EFD2A
+      shell:  apt-key adv --keyserver keys.gnupg.net --recv-keys 1C4CBDCDCD2EFD2A
+    - name: " Add Repo {{ ansible_distribution_release }}"
+      apt_repository: state=present repo='deb http://repo.percona.com/apt {{ ansible_distribution_release }} main'
+    - name: "Updatding Cache"
+      apt: update_cache=yes
+    - name: Install percona 5.6 as defined
+      apt:  "pkg=percona-xtradb-cluster-server-5.6 state=present"
+      when: mysql_version is defined and mysql_version == "5.6"
+    - name: Install percona 5.6 as default and mysql_version not defined
+      apt:  "pkg=percona-xtradb-cluster-server-5.6 state=present"
+      when: mysql_version is undefined 
+    - name: Install percona 5.5 as defined
+      apt:  "pkg=percona-xtradb-cluster-server-5.5 state=present"
+      when: mysql_version is defined and mysql_version == "5.5"
+
+    - name: Install galera 2.x as defined
+      apt: "pkg=percona-xtradb-cluster-galera-2.x state=present"
+      when: galera_version is defined and galera_version == "2.x"
+    - name: Install galera 3.x as defined
+      apt: "pkg=percona-xtradb-cluster-galera-3.x state=present"
+      when: galera_version is defined and galera_version == "3.x"
+    - name: Install galera 3.x as default as galera_version is not defined
+      apt: "pkg=percona-xtradb-cluster-galera-3.x state=present"
+      when: galera_version is undefined 
+

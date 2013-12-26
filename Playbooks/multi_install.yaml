@@ -1,0 +1,8 @@
+---
+ - include: services.yaml                 tags=galera,sysbench
+ - include: rhelpackages.yaml             tags=galera,sysbench  
+ - include: installcoderhipsrhel.yaml     tags=galera
+ - include: galera_configure.yaml         tags=galera
+ - include: sysbench_packages_rhel.yaml   tags=sysbench            
+ - include: sysbench_scripts.yaml         tags=sysbench        
+ - include: cluster_inital_start.yaml     tags=galera
