@@ -16,6 +16,8 @@ my2.fqdn.it  ansible_ssh_user=root
 dns.name ansible_ssh_user=root
 #v-
 
+EC2 Example to get instances
+
 First we got two containers ([galera] and [sysbench]).
 There you put your machines in it. You are free to use 
 the DNS name or the IP for the first column.
