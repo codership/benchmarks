@@ -16,6 +16,9 @@ Having a look at the tags
 20131224 Use host variables to define the initial node? (inventory file)
 20131224 Increate the limits.conf
 20131226 Write a little howto
+20131227 Allow Users to put there own configfiles to be distributed
+          tasks: clean remote conf.d also
+20131227 change the defaults in the templates, so you can use M and G on commandline i.e. for buffer_pool_size
 
 
 
