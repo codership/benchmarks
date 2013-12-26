@@ -1,0 +1,4 @@
+Successfull runs (the information is in the tests also)
+image           provider
+ami-eb6b0182    coderhips 5.5
+ami-eb6b0182    coderhips 5.6
