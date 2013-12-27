@@ -40,6 +40,10 @@ Test your ini file:
 Now you can run your first installation (as of 20131226 we support 
 the RedHat OS family and coderhip installation).
 
+So following was tested with the ami-eb6b0182 on aws. 
+Just have a look into the Docs to find other tested images.
+It will install you a patched MySQL 5.6 (from codership) with galera 3.x.
+
 > ansible-playbook -i galera.ini Playbook/multi_install.yaml --extra-vars="gcomm=10.71.146.133,10.140.29.140,10.137.33.80"
 While Playbook/multi_install.yaml is just a File holding/including a bunch of tasks.
 You got to provide the Value for gcomm. 
