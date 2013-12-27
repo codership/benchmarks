@@ -4,8 +4,7 @@
   vars:
    logfile: /tmp/sysbench.log
   vars_files:
-    - sysbench_vars.yaml
-    - mysql_vars.yaml
+    - config_vars.yaml
   tasks:
    - name: Create logfile
      shell: rm {{ logfile }} || true

@@ -23,6 +23,8 @@
       shell: cd /tmp && wget "{{ sysbench }}" && touch /tmp/sysbench   creates=/tmp/sysbech
     - name:   Install {{ sysbench }}  #  Fixed check for sysbench-0.5-3.el6.x86_64 to make it idempodent -> FIX IT
       shell:  rpm -q {{ sysbench_name }} || rpm -U /tmp/{{ sysbench_file }} 
+      ignore_errors: true
+
       #shell:  rpm -q sysbench-0.5-3.el6.x86_64 || rpm -U /tmp/{{ sysbench_file }} 
 # http://www.lefred.be/files/sysbench-0.5-3.el6_.x86_64.rpm
 

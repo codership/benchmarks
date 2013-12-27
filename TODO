@@ -1,14 +1,14 @@
 Create Repos for codership
 Build in a switch for the MySQL Repo to decide to use 55 56 or 57
-upgrading (and then rewriting plays) to 1.5 -> done
+upgrading (and then rewriting plays) to 1.5                                                                    -> done
 Having a look at the tags
 20131221 Fix condition checking in rhelpackages.yaml
 20131221 transform sysbench.sh -> template -> module (got to get a better way to pass variables
-20131221 Write a big Playbook with -includes etc.
+20131221 Write a big Playbook with -includes etc.                                                              -> done
 20131221 Find a proper way for user interaction. We got a bunch of variables cml vs configfile
-20131222 But in prepare script. it does not quit
+20131222 Build in prepare script. it does not quit                                                             -> done
 20131222 In fact the way we test right now is not that good. As every test with DML changes the dataset for the next test.
-         Woult be better to haven a golden image dataset. But thats - for now - too complicated
+         Would be better to haven a golden image dataset. But thats - for now - too complicated
 20131222 Store the setupvariables from ansible:)
 20131222 iostat etc?
 20131222 Check to only run on 64bit
@@ -16,6 +16,10 @@ Having a look at the tags
 20131224 Use host variables to define the initial node? (inventory file)
 20131224 Increate the limits.conf
 20131226 Write a little howto
+20131227 Allow Users to put there own configfiles to be distributed                                            -> done
+          tasks: clean remote conf.d also
+20131227 change the defaults in the templates, so you can use M and G on commandline i.e. for buffer_pool_size -> done
+20131227 make sure to fail if no gcomm is defined                                                              -> done
 
 
 
