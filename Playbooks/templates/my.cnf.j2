@@ -20,7 +20,7 @@ max_connections               = 2000
 # Galera
 wsrep_provider                = "{{ galerapath }}"
 wsrep_cluster_name            = deadcandance
-wsrep_cluster_address         = "gcomm://{{ gcomm }}"
+wsrep_cluster_address         = "gcomm://{{ gcomm | mandatory }}"
 wsrep_slave_threads           = {{ wsrep_slave_threads| default(8) }}
 wsrep_certify_nonPK           = 1
 wsrep_max_ws_rows             = 131072

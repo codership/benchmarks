@@ -1,1 +1,7 @@
-20131215  Initialized
+20131226  erkan
+- Added the deployment of user config data 
+- Added Howto
+- Merged galera_vars.yaml, mysql_vars.yaml sysbench_vars.yaml into config_vars.yaml
+- Some cleaning
+- Added Play to check variables
+20131222  Initialized

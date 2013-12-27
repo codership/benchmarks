@@ -1,0 +1,24 @@
+--- 
+
+# galera
+gcomm: 
+galerapath: /usr/lib64/galera/libgalera_smm.so
+
+# Credentials
+root_user:          admin
+root_password:      admin
+sysbench_user:      sysbench
+sysbench_password:  icanboogie
+# For sysbench
+table_count:  5
+mysql_host:  "{{ gcomm.split(',')[0] }}"
+num_threads:  
+      - 1
+      - 4
+      - 8
+      - 16
+      - 32
+      - 64
+      - 96
+      - 128
+

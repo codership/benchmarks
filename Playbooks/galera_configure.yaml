@@ -4,11 +4,12 @@
 ##    gcomm:      172.17.0.194,172.17.0.195,172.17.0.196
 ##    galerapath: /usr/lib64/galera/libgalera_smm.so
   vars_files:
-    - galera_vars.yaml
-    - mysql_vars.yaml
+    - config_vars.yaml
   tasks:
-    - name: disable selinux
-      shell: /sbin/setenforce 0 || /bin/true
+    - name:     Disable SELinux
+      shell:    /sbin/setenforce 0 || /bin/true
+    - name:     Deleting /etc/mysql/conf.d 
+      file:     path=/etc/mysql state=absent
     - name:     Make sure /etc/mysql is a directory
       file:     path=/etc/mysql state=directory 
     - name:     Make sure /etc/mysql/conf.d is a directory
@@ -21,4 +22,8 @@
       action:   template src=templates/my.cnf.j2 dest=/etc/mysql/my.cnf
     - name:     Ensure rights for the mc.cnf (not needed as read by root)
       file:     path=/etc/mysql/my.cnf mode=444
+    - name:     Copy Userconfig
+      copy:     src={{ item }} dest=/etc/mysql/conf.d mode=444
+      with_fileglob: 
+        - ../User/conf.d/*.cnf
 

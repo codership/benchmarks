@@ -2,9 +2,15 @@ This is a little HOWTO.
 
 Reminder: Check your ansible version. This Repo is build and tested against ansible 1.4.3
 
-Right now you got no help in building you ini file.
-This is going to be the file to identify your nodes.
-It is going to look like this:
+First get the files:
+> https://github.com/codership/benchmarks.git
+> cd benchmarks
+
+From now this is your working directory.
+Right now you got no help in building your ini file.
+That file is responsible for identifying/grouping your nodes.
+
+It is going to look similar to  this:
 
 #v+
 [galera]
@@ -16,33 +22,33 @@ my2.fqdn.it  ansible_ssh_user=root
 dns.name ansible_ssh_user=root
 #v-
 
-EC2 Example to get instances
+First we got to groups.
+The [galera] group defines our galera nodes.
+While [sysbench] defines the test nodes.
+(for now it is recommended to have only one test node.)
 
-First we got two containers ([galera] and [sysbench]).
-There you put your machines in it. You are free to use 
-the DNS name or the IP for the first column.
 The ansible_ssh_user option just tells which user to use
-to log on the remote machine. We suggest to deploy your
-public key on that nodes.
+for logging into the remote machine. (We suggest to deploy your
+public key on all nodes.)
 One of the galera nodes got to be marked with leader=me. 
 It just tells which node will run the first/initial galera instance.
 
+We assume our ini file is named galera.ini
 Test your ini file:
-> ansible -i $YOURFILE -m ping
+> ansible -i galera.ini -m ping
 
 Now you can run your first installation (as of 20131226 we support 
 the RedHat OS family and coderhip installation).
 
-> ansible-playbook -i $YOURFILE Playbook/multi_install.yaml
+> ansible-playbook -i galera.ini Playbook/multi_install.yaml --extra-vars="gcomm=10.71.146.133,10.140.29.140,10.137.33.80"
+While Playbook/multi_install.yaml is just a File holding/including a bunch of tasks.
+You got to provide the Value for gcomm. 
+After a short time you got a running galera cluster.
+Go and connect to have a look.
 
-Playbook/multi_install.yaml is just a bunch of scripts. 
-In the end you are going to have a running galera cluster with
-all the testnodes pointing to the leader node for testing.
+So now run your first Test
 
-
-Great now run your first Test
-
-> ansible-playbook -i $YOURFILE Playbook/multi_test.yaml
+> ansible-playbook -i galera.ini Playbook/multi_test.yaml
 
 Great you are done.
 The result file is stored in your /tmp. Fixed later :)
