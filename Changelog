@@ -1,3 +1,6 @@
+20131228  erkan
+- Fixed for bugs found by Teemu
+- Make wsrep_node_address configurable via hosts variables
 20131227  erkan
 - Addes user configuration file. So user can configure/hardcode there setup
 - Small fixes

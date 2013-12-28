@@ -11,8 +11,9 @@
       shell: rpm -qa | grep -U  mysql
       ignore_errors: true
       register: rpm
-    - name: remove package
+    - name: Remove packages
       shell: yum erase -y  {{ rpm.stdout }}
+      when: rpm is defined
       ignore_errors: true
       when: rpm
     - name: Install packages
