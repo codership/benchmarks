@@ -5,6 +5,7 @@
    logfile: /tmp/sysbench.log
   vars_files:
     - config_vars.yaml
+    - [ ../User/user_configuration_vars.yaml, config_vars.yaml ]                                                                                                       
   tasks:
    - name: Create logfile
      shell: rm {{ logfile }} || true
