@@ -5,7 +5,7 @@ Having a look at the tags
 20131221 Fix condition checking in rhelpackages.yaml
 20131221 transform sysbench.sh -> template -> module (got to get a better way to pass variables
 20131221 Write a big Playbook with -includes etc.                                                              -> done
-20131221 Find a proper way for user interaction. We got a bunch of variables cml vs configfile
+20131221 Find a proper way for user interaction. We got a bunch of variables cml vs configfile                 -> done
 20131222 Build in prepare script. it does not quit                                                             -> done
 20131222 In fact the way we test right now is not that good. As every test with DML changes the dataset for the next test.
          Would be better to haven a golden image dataset. But thats - for now - too complicated
@@ -15,11 +15,12 @@ Having a look at the tags
 20131222 Write a check module for all the variables .. MESSIE!!!
 20131224 Use host variables to define the initial node? (inventory file)
 20131224 Increate the limits.conf
-20131226 Write a little howto
+20131226 Write a little howto                                                                                  -> done
 20131227 Allow Users to put there own configfiles to be distributed                                            -> done
           tasks: clean remote conf.d also
 20131227 change the defaults in the templates, so you can use M and G on commandline i.e. for buffer_pool_size -> done
 20131227 make sure to fail if no gcomm is defined                                                              -> done
+20140104 Do something like a os_family--provider structure to extend installations
 
 
 

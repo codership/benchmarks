@@ -1,3 +1,7 @@
+10240104  erkan
+- As we consolidate configuration files we removded old configfiles
+- User/user_configuration_vars.yaml added. User can configure the cluster via
+  configfile also
 20131228  erkan
 - Fixed for bugs found by Teemu
 - Make wsrep_node_address configurable via hosts variables
