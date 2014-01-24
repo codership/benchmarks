@@ -2,7 +2,7 @@
 - hosts: galera
   vars_files:
    - config_vars.yaml
-  - [ ../User/user_configuration_vars.yaml, config_vars.yaml ]                                                                                                       
+   - [ ../User/user_configuration_vars.yaml, config_vars.yaml ]                                                                                                       
   tasks:
     - fail: "Variable gcomm was not defined"
       when:  gcomm is undefined

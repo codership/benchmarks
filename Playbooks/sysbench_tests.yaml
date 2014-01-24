@@ -12,6 +12,7 @@
 
    - name: drop/create/fill sbtest schema
      shell: ./sysbench.sh task=prepare mysql_host={{ mysql_host }} mysql_user={{ sysbench_user }} mysql_passwd={{ sysbench_password }} log_table={{ logfile }} table_count={{ table_count }} 
+
    - name: global variabls/status
      shell: ./sysbench.sh task=initial mysql_host={{ mysql_host }} mysql_user={{ sysbench_user }} mysql_passwd={{ sysbench_password }} log_table={{ logfile }}
 

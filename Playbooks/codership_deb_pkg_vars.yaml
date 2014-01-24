@@ -1,0 +1,17 @@
+---
+## will not work as MySQL only provides one Package for all. So we don't get mysqlclient and mysqllib from oraggle.
+mysqld:           https://launchpad.net/codership-mysql/5.6/5.6.14-25.1/+download/mysql-server-wsrep-5.6.14-25.1-amd64.deb
+mysqld_file:      "{{ mysqld.split('/')[-1] }}"
+mysqld_name:      "{{ mysqld_file.replace('.rpm','') }}"
+galera:           https://launchpad.net/galera/3.x/25.3.2/+download/galera-25.3.2-amd64.deb
+galera_file:      "{{ galera.split('/')[-1] }}"
+galera_name:      "{{ galera_file.replace('.rpm','') }}"
+mysqlclient:      http://dev.mysql.com/get/Downloads/MySQL-5.5/MySQL-client-5.5.35-1.el6.x86_64.rpm
+mysqlclient_file: "{{ mysqlclient.split('/')[-1] }}"
+mysqlclient_name: "{{ mysqlclient_file.replace('.rpm','') }}"
+sysbench:          http://www.lefred.be/files/sysbench-0.5-3.el6_.x86_64.rpm                                
+sysbench_file:    "{{ sysbench|basename }}"
+sysbench_name:    "{{ sysbench_file.replace('.rpm','') }}"
+mysqllib:         MySQL-shared-5.6.15-1.linux_glibc2.5.x86_64.rpm
+mysqlrepo:        http://dev.mysql.com/get/mysql-community-release-el6-5.noarch.rpm
+repoversion:      For later use
