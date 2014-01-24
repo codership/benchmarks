@@ -89,6 +89,10 @@ function get_status {
   fi
 }
 
+function flush_status{                     
+    $MYSQL -N -e 'FLUSH STATUS'   
+}
+
 function get_variables {
   if [ ${INLINE_BLOCK} -eq 1 ]; then
     echo -n "GLOBAL_VARIABLES: {"
@@ -155,8 +159,8 @@ fi
 
 if [ ${task} == "run" ]; then
 check_buffer_pool
+flush_status
 seqno=$(date  "+%y%m%d%H%M%S")         # We need a unique number in that BIG yaml file
-status_before="$(get_status)"
 head="
 ${seqno}: 
   sysbench settings:
@@ -174,7 +178,6 @@ fi
 status_after="$(get_status)"
 [ ${MODULE} -eq 1 ] && exec >>${log_table}
 echo "${head}"
-echo " ${status_before}"
 echo "${sysbench}"
 echo " ${status_after}"
 #get_status
