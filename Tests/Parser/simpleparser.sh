@@ -29,3 +29,5 @@ do
   cat $1 |  grep -v '^GLOBAL'|grep -E 'num_threads:|mysql_test:|transactions:|deadlocks:|read/write requests:' | sed 's/transactions:.*(\(.*\) per.*/\1/'| sed 's#read/write requests:.*(\(.*\) per.*#\1#' | sed 's/deadlocks:.*(\(.*\) per.*/\1/' | sed 's/mysql_test:.* //'| tr -d '\n'| sed "s/num_threads:/\\n/g"
   shift
 done
+# We need another newline
+echo 

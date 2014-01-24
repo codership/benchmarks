@@ -156,6 +156,7 @@ fi
 if [ ${task} == "run" ]; then
 check_buffer_pool
 seqno=$(date  "+%y%m%d%H%M%S")         # We need a unique number in that BIG yaml file
+status_before="$(get_status)"
 head="
 ${seqno}: 
   sysbench settings:
@@ -170,10 +171,13 @@ sysbench=$($SYSBENCH --test=/usr/share/doc/sysbench/tests/db/${mysql_test}.lua  
 if [ $? -ne 0 ] ; then
     echo "failed=true msg=\"$sysbench\""
 fi
+status_after="$(get_status)"
 [ ${MODULE} -eq 1 ] && exec >>${log_table}
 echo "${head}"
+echo " ${status_before}"
 echo "${sysbench}"
-get_status
+echo " ${status_after}"
+#get_status
 [ ${MODULE} -eq 1 ] && exec 1>&3
 
 echo "changed=false msg=\"${mysql_test} done\""
