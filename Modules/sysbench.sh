@@ -175,12 +175,13 @@ sysbench=$($SYSBENCH --test=/usr/share/doc/sysbench/tests/db/${mysql_test}.lua  
 if [ $? -ne 0 ] ; then
     echo "failed=true msg=\"$sysbench\""
 fi
-status_after="$(get_status)"
+#status_after="$(get_status)"
 [ ${MODULE} -eq 1 ] && exec >>${log_table}
 echo "${head}"
 echo "${sysbench}"
-echo " ${status_after}"
-#get_status
+#echo " ${status_after}"
+echo -n " "
+get_status
 [ ${MODULE} -eq 1 ] && exec 1>&3
 
 echo "changed=false msg=\"${mysql_test} done\""
