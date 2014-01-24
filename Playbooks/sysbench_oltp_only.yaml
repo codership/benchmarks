@@ -20,7 +20,7 @@
      shell: ./sysbench.sh task=warmup                table_count={{ table_count }}                         mysql_host={{ mysql_host }} mysql_user={{ sysbench_user }} mysql_passwd={{ sysbench_password }} 
 
    - name:  Sysbench oltp task
-     shell: ./sysbench.sh task=run mysql_test=oltp table_count={{ table_count }} num_threads={{ item }} mysql_host={{ mysql_host }} mysql_user={{ sysbench_user }} mysql_passwd={{ sysbench_password }} log_table={{ logfile }}
+     shell: ./sysbench.sh task=run mysql_test=oltp table_count={{ table_count }} num_threads={{ item }} mysql_host={{ mysql_host }} mysql_user={{ sysbench_user }} mysql_passwd={{ sysbench_password }} log_table={{ logfile }} max_time=5
      with_items: num_threads
 
    - name: Fetching File
