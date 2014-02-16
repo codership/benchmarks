@@ -89,8 +89,8 @@ function get_status {
   fi
 }
 
-function flush_status{                     
-    $MYSQL -N -e 'FLUSH STATUS'   
+function flush_status {                     
+    $MYSQL -N -e  'FLUSH STATUS'   
 }
 
 function get_variables {
@@ -171,7 +171,7 @@ ${seqno}:
       max_time:     ${max_time}
       mysql_test:   ${mysql_test}
       distribution: ${distribution}"
-sysbench=$($SYSBENCH --test=/usr/share/doc/sysbench/tests/db/${mysql_test}.lua  --oltp_tables_count=${table_count} --oltp-dist-type=${distribution} --oltp-table-size=${table_size} --num-threads=${num_threads} --max-time=${max_time}  --max-requests=${max_requests} run|  sed -n '/./p'| grep -Ev '^Random|^Runnin|^Threads|^sysbench|^Number' |  sed 's/^/  /')
+sysbench=$($SYSBENCH --test=/usr/share/doc/sysbench/tests/db/${mysql_test}.lua  --oltp_tables_count=${table_count} --oltp-dist-type=${distribution} --oltp-table-size=${table_size} –oltp-auto-inc=off --num-threads=${num_threads} --max-time=${max_time}  --max-requests=${max_requests} run|  sed -n '/./p'| grep -Ev '^Random|^Runnin|^Threads|^sysbench|^Number' |  sed 's/^/  /')
 if [ $? -ne 0 ] ; then
     echo "failed=true msg=\"$sysbench\""
 fi
