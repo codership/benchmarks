@@ -1,4 +1,7 @@
-10240104  erkan
+20140423 erkan
+- New Options innodb_flush_log_at_trx_commit log_bin sync_binlog
+- Changed Defaults. We are going to use the actual Binaries.
+20140104  erkan
 - As we consolidate configuration files we removded old configfiles
 - User/user_configuration_vars.yaml added. User can configure the cluster via
   configfile also

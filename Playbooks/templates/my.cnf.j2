@@ -3,11 +3,12 @@ user                          = mysql
 binlog_format                 = ROW
 default-storage-engine        = innodb
 
-innodb_autoinc_lock_mode      = 2
-innodb_flush_log_at_trx_commit= 0
-innodb_buffer_pool_size       = {{ innodb_buffer_pool_size| default('2048M') }}
-innodb_log_buffer_size        = {{ innodb_log_buffer_size| default('128M') }}
-innodb_file_per_table        = 1
+innodb_autoinc_lock_mode       = 2
+innodb_flush_log_at_trx_commit = {{ innodb_flush_log_at_trx_commit | default(2) }}
+#innodb_buffer_pool_size       = {{ innodb_buffer_pool_size| default('2048M') }}
+#innodb_log_buffer_size        = {{ innodb_log_buffer_size| default('128M') }}
+
+datadir                        = {{ datadir | default('/var/lib/mysql') }}
 
 query_cache_size              = 0
 query_cache_type              = 0
@@ -16,6 +17,15 @@ bind-address                  = 0.0.0.0
 init_file                     = /etc/mysql/init
 skip_name_resolve             
 max_connections               = 2000
+
+{% if log_bin is defined %}
+log_bin                       =  {{ datadir }}/mysql_bin
+{% endif %}
+
+{% if sync_binlog is defined %}
+sync_binlog                     = 1
+{% endif %}
+
 
 # Galera
 wsrep_provider                = "{{ galerapath }}"
