@@ -1,0 +1,29 @@
+---
+- hosts: sysbench
+  name: Some standard sysbench tests
+  vars:
+   logfile: /tmp/sysbench.log
+  vars_files:
+    - config_vars.yaml
+    - [ ../User/user_configuration_vars.yaml, config_vars.yaml ]                                                                                                       
+  tasks:
+   - name: Create logfile
+     shell: rm {{ logfile }} || true
+
+   - name: drop/create/fill sbtest schema
+     shell: ./sysbench.sh task=prepare mysql_host={{ mysql_host }} mysql_user={{ sysbench_user }} mysql_passwd={{ sysbench_password }} log_table={{ logfile }} table_count={{ table_count }} 
+
+   - name: global variabls/status
+     shell: ./sysbench.sh task=initial mysql_host={{ mysql_host }} mysql_user={{ sysbench_user }} mysql_passwd={{ sysbench_password }} log_table={{ logfile }}
+
+   - name:  Sysbench select warmup not counting
+     shell: ./sysbench.sh task=warmup                table_count={{ table_count }}                         mysql_host={{ mysql_host }} mysql_user={{ sysbench_user }} mysql_passwd={{ sysbench_password }} 
+
+   - name:  Sysbench oltp task
+     shell: ./sysbench.sh task=run mysql_test=oltp table_count={{ table_count }} num_threads={{ item }} mysql_host={{ mysql_host }} mysql_user={{ sysbench_user }} mysql_passwd={{ sysbench_password }} log_table={{ logfile }} 
+     with_items: num_threads
+
+   - name: Fetching File
+     fetch: src={{ logfile }} dest=/tmp/sysbench-{{ ansible_hostname }}-{{ ansible_date_time.epoch }} flat=yes
+
+

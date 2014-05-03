@@ -15,9 +15,9 @@
       shell: yum erase -y  {{ rpm.stdout }}
       when: rpm is defined
       ignore_errors: true
-      when: rpm
     - name: Install packages
       shell: yum install -y {{ item }}
+      ignore_errors: true
       with_items:
         - wget
         - perl

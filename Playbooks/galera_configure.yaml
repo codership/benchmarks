@@ -5,6 +5,7 @@
 ##    galerapath: /usr/lib64/galera/libgalera_smm.so
   vars_files:
     - config_vars.yaml
+    - [ ../User/user_configuration_vars.yaml, config_vars.yaml ]
   tasks:
     - name:     Disable SELinux
       shell:    /sbin/setenforce 0 || /bin/true

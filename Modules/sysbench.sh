@@ -89,6 +89,10 @@ function get_status {
   fi
 }
 
+function flush_status {                     
+    $MYSQL -N -e  'FLUSH STATUS'   
+}
+
 function get_variables {
   if [ ${INLINE_BLOCK} -eq 1 ]; then
     echo -n "GLOBAL_VARIABLES: {"
@@ -155,6 +159,7 @@ fi
 
 if [ ${task} == "run" ]; then
 check_buffer_pool
+flush_status
 seqno=$(date  "+%y%m%d%H%M%S")         # We need a unique number in that BIG yaml file
 head="
 ${seqno}: 
@@ -166,13 +171,16 @@ ${seqno}:
       max_time:     ${max_time}
       mysql_test:   ${mysql_test}
       distribution: ${distribution}"
-sysbench=$($SYSBENCH --test=/usr/share/doc/sysbench/tests/db/${mysql_test}.lua  --oltp_tables_count=${table_count} --oltp-dist-type=${distribution} --oltp-table-size=${table_size} --num-threads=${num_threads} --max-time=${max_time}  --max-requests=${max_requests} run|  sed -n '/./p'| grep -Ev '^Random|^Runnin|^Threads|^sysbench|^Number' |  sed 's/^/  /')
+sysbench=$($SYSBENCH --test=/usr/share/doc/sysbench/tests/db/${mysql_test}.lua  --oltp_tables_count=${table_count} --oltp-dist-type=${distribution} --oltp-table-size=${table_size}  --num-threads=${num_threads} --max-time=${max_time}  --max-requests=${max_requests} run|  sed -n '/./p'| grep -Ev '^Random|^Runnin|^Threads|^sysbench|^Number' |  sed 's/^/  /')
 if [ $? -ne 0 ] ; then
     echo "failed=true msg=\"$sysbench\""
 fi
+#status_after="$(get_status)"
 [ ${MODULE} -eq 1 ] && exec >>${log_table}
 echo "${head}"
 echo "${sysbench}"
+#echo " ${status_after}"
+echo -n " "
 get_status
 [ ${MODULE} -eq 1 ] && exec 1>&3
 

@@ -1,0 +1,6 @@
+#- include: variable_checking.yaml
+#- include: galera_configure.yaml
+#- include: galera_restart.yaml
+- include: sysbench_oltp_only.yaml
+
+
